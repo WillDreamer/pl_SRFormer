@@ -1,0 +1,37 @@
+{
+    "surface_variables": {
+        "eastward_wind": "uas",
+        "northward_wind": "vas",
+        "air_temperature": "tas",
+        "air_pressure_at_sea_level": "psl"
+    },
+    "surface_variables_conversion": {
+        "uas": "u10",
+        "vas": "v10",
+        "tas": "t2m",
+        "psl": "msl"
+    },
+    "atmospheric_variables": {
+        "specific_humidity": "hus",
+        "eastward_wind": "ua",
+        "northward_wind": "va",
+        "air_temperature": "ta",
+        "geopotential_height": "zg"
+    },
+    "atmospheric_variables_conversion": {
+        "hus": "q",
+        "ua": "u",
+        "va": "v",
+        "ta": "t",
+        "zg": "z"
+    },
+    "pressure_levels": [
+        50,
+        250,
+        500,
+        600,
+        700,
+        850,
+        925
+    ]
+}

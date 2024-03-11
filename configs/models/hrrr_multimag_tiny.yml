@@ -1,0 +1,70 @@
+model:
+  net:
+    class_path: modules.kms_multimag_hrrr.ForeHRRR
+    init_args:
+      # Input infos
+      multi_list: [False, True, False, False, False] # stands for ['era5', 'hrrr', 'goes', 'mrms', 'station']
+      num_variables: [59, 19, 4, 1, 5]
+      spatial_sizes: [32, 320, 320, 960, 320] # crop_size = 32
+      num_in_frames: [2, 2, 6, 6, 4]
+      num_out_frames: [0, 1, 0, 0, 0] 
+      latent_size: 64
+      init_dim: 48
+      hidden_dim: 192
+      embed_dim: 384
+      temporal_dim: 384
+
+      # Tricks
+      add_grad_loss: True
+      use_geo: False
+      use_time: False
+      geo_dim: 5
+      attend_space: False
+      attend_time: False
+      use_interpolation: True
+      interpolate_mode: 'bilinear'
+      moe_type: 'soft'
+      moe_layers: []
+      num_experts: 512
+      margin: 30
+      pred_delta: True
+      # Tasks
+      loss_type: 'mse'
+      use_weights: False
+
+      # all 69 variables
+      masked_picked_idx: []
+      log_picked_idx: []
+      out_groups: [4, 3, 3, 3, 3, 3]
+
+      # Swin v2 block paramaters
+      temporal_depth: 48
+      num_heads: 16
+      temporal_window_size:  8
+      mlp_ratio: 4.
+      qkv_bias: True
+      drop_rate: 0.02
+      attn_drop_rate: 0.02
+      drop_path_rate: 0.02
+      layer_norm: True
+      use_checkpoint: False
+
+  restart_path: ""
+  opt_name: adamw
+  # opt_name: rmsprop
+  rmsprop_alpha: 0.99 # for rmsprop optimizer
+  lr: 3e-4
+  beta_1: 0.9 # for adam optimizer
+  beta_2: 0.999 # for adam optimizer
+  weight_decay: 0.02
+  warmup_steps: 3000
+  warmup_start_lr: 0
+  eta_min: 1e-7
+  # dataset configs
+  datasets: ['hrrr']
+  not_used_levels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  norm_path: './'
+  data_type: 32
+  max_steps: 50000
+  need_rescale_grad: False
+

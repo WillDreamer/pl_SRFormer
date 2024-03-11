@@ -1,0 +1,19 @@
+data:
+  data_dir: {
+      "era5": 'era5_npy/',
+  }
+  time_config: {
+      'era5': {'input': 2, 'output': 1, 'gap': 6}, 
+  }
+  mount_paths: ['/weather-blob/kms1']
+  position_file : {'goes': 'configs/datasets/goes_hw64x64.txt'}
+  crop_h: 720
+  crop_w: 1440
+  h: 720
+  w: 1440
+  margin: 0
+  pad: 0
+  crop_cnt: 1
+  batch_size: 1
+  num_threads: 8
+  train_end_datetime: '2018010100' # '2017010100'

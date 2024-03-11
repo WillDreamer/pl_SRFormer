@@ -1,0 +1,45 @@
+model:
+  net:
+    class_path: modules.baseline_metnet2.ForeHRRR
+    init_args:
+      # Input infos
+      multi_list: [False, True, False, False, False] # stands for ['era5', 'hrrr', 'goes', 'mrms', 'station']
+      num_variables: [59, 69, 4, 1, 5]
+      spatial_sizes: [32, 320, 320, 960, 320] # crop_size = 32
+      num_in_frames: [2, 2, 6, 6, 4]
+      num_out_frames: [0, 1, 0, 0, 0] 
+      init_dim: 96
+      hidden_dim: 480
+      embed_dim: 960
+
+      # Tricks
+      add_grad_loss: True
+      margin: 30
+      img_size: 320
+      pred_delta: False
+      # Tasks
+      loss_type: 'mse'
+      use_weights: False
+
+      # all 69 variables
+      masked_picked_idx: []
+      log_picked_idx: []
+
+  restart_path: ""
+  opt_name: adamw
+  # opt_name: rmsprop
+  rmsprop_alpha: 0.99 # for rmsprop optimizer
+  lr: 3e-4
+  beta_1: 0.9 # for adam optimizer
+  beta_2: 0.999 # for adam optimizer
+  weight_decay: 0.02
+  warmup_steps: 3000
+  warmup_start_lr: 0
+  eta_min: 1e-7
+  # dataset configs
+  datasets: ['hrrr']
+  not_used_levels: []
+  norm_path: './'
+  data_type: 32
+  max_steps: 50000
+  need_rescale_grad: False

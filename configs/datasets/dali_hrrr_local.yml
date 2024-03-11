@@ -1,0 +1,22 @@
+data:
+  data_dir: {
+      "hrrr": 'hrrr/hourly2_fixed_TMP_L103',
+  }
+  time_config: {
+      'hrrr': {'input': 2, 'output': 1, 'gap': 1}, 
+  }
+  mount_paths: ['/home/v-penxiao/weather-blob/kms1']
+  position_file : {'goes': 'configs/datasets/goes_hw64x64.txt'}
+  crop_h: 32
+  crop_w: 32
+  crop_cnt: 4
+  fold_ratio: 2
+  pad: 0
+  margin: 0
+  h: 105
+  w: 179
+  batch_size: 1
+  # the actual batch size that is fed to be model would be: fold_ratio*fold_ratio*batch_size
+  num_threads: 8
+  train_end_datetime: '2020070100'
+  prefetch_queue_depth: 1

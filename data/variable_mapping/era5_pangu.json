@@ -1,0 +1,55 @@
+{
+    "surface_variables": {
+        "10m_u_component_of_wind": "u10",
+        "10m_v_component_of_wind": "v10",
+        "2m_temperature": "t2m",
+        "mean_sea_level_pressure": "msl",
+        "surface_pressure": "sp",
+        "2m_dewpoint_temperature": "d2m",
+        "total_cloud_cover": "tcc",
+        "total_column_water_vapour": "tcwv",
+        "skin_temperature": "skt",
+        "sea_surface_temperature": "sst"
+    },
+    "surface_variables_conversion": {
+        "u10": "u10",
+        "v10": "v10",
+        "t2m": "t2m",
+        "msl": "msl",
+        "sp": "sp",
+        "d2m": "d2m",
+        "tcc": "tcc",
+        "tcwv": "tcwv",
+        "skt": "skt",
+        "sst": "sst"
+    },
+    "atmospheric_variables": {
+        "geopotential": "z",
+        "specific_humidity": "q",
+        "temperature": "t",
+        "u_component_of_wind": "u",
+        "v_component_of_wind": "v"
+    },
+    "atmospheric_variables_conversion": {
+        "z": "z",
+        "q": "q",
+        "t": "t",
+        "u": "u",
+        "v": "v"
+    },
+    "pressure_levels": [
+        50, 
+        100, 
+        150, 
+        200, 
+        250, 
+        300, 
+        400, 
+        500, 
+        600, 
+        700, 
+        850, 
+        925,
+        1000
+    ]
+}
