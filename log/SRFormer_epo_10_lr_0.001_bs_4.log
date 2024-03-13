@@ -1,0 +1,9 @@
+2024-03-13 03:31:13.670 | INFO     | __main__:<module>:68 - Namespace(bs=4, epochs=10, gpu=0, lr=0.001, model='SRFormer', seed=2024)
+2024-03-13 03:36:11.589 | INFO     | __main__:<module>:147 - Start to Training!
+2024-03-13 03:36:15.631 | INFO     | __main__:<module>:68 - Namespace(bs=4, epochs=10, gpu=0, lr=0.001, model='SRFormer', seed=2024)
+2024-03-13 03:36:16.626 | INFO     | __main__:<module>:68 - Namespace(bs=4, epochs=10, gpu=0, lr=0.001, model='SRFormer', seed=2024)
+2024-03-13 03:36:17.593 | INFO     | __main__:<module>:68 - Namespace(bs=4, epochs=10, gpu=0, lr=0.001, model='SRFormer', seed=2024)
+2024-03-13 03:43:19.504 | INFO     | __main__:<module>:147 - Start to Training!
+2024-03-13 03:43:19.522 | INFO     | __main__:<module>:147 - Start to Training!
+2024-03-13 03:43:19.555 | INFO     | __main__:<module>:147 - Start to Training!
+2024-03-13 03:49:07.299 | INFO     | __main__:<module>:68 - Namespace(bs=4, epochs=10, gpu=0, lr=0.001, model='SRFormer', seed=2024)

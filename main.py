@@ -31,7 +31,7 @@ parser.add_argument('--seed', default=2024, type=int,
                     help='random seed')
 parser.add_argument('--model', default="SRFormer", type=str,
                     help='model name')
-parser.add_argument('--bs', default=8, type=int,
+parser.add_argument('--bs', default=4, type=int,
                     help='batch_size')
 parser.add_argument('--epochs', default=10, type=int,
                     help='Epochs')
@@ -136,8 +136,8 @@ device = torch.device("cuda:%d" % args.gpu)
 torch.cuda.set_device(args.gpu)
 
 model = SRFormer(img_size=32, upsampler = 'pixelshuffledirect',in_chans=69,
-                 window_size=2, embed_dim=768, depths=[6, 6, 6, 6, 6, 6, 6, 6, 6, 6], 
-                 num_heads=[4, 4, 4, 4, 4, 4, 4, 4, 4, 4], upscale=10).to(device)
+                 window_size=2, embed_dim=512, depths=[6, 6, 6, 6, 6, 6, 6, 6, 6, 6], 
+                 num_heads=[4, 4, 4, 4,4 ,4, 4, 4, 4, 4], upscale=10)
 
 model_dir = '/home/whx/pl_SRFormer/ckpt/' + args.model
 if not os.path.exists(model_dir):
@@ -150,15 +150,15 @@ trainer_params = {
     "devices": [0,1,2,3],
     "accelerator":"gpu",
     "precision":"16",
-    "max_epochs": epochs,  # 1000
+    "max_epochs": epochs,  
     "logger": False,  # TensorBoardLogger
-    "callbacks": [
-        # pl.callbacks.EarlyStopping(monitor="val_loss", patience=10, mode="min"),
-        # pl.callbacks.ModelCheckpoint(monitor="val_loss", save_top_k=1, mode="min"),
-        pl.callbacks.ModelCheckpoint(every_n_train_steps=1000, save_top_k=-1),
-        FlexibleTqdm(data_module.train_data_size // batch_size, column_width=12), # 注意设置progress_bar_refresh_rate=0，取消自带的进度条
-        LearningCurve(figsize=(12, 4), names=("loss", "mse")),
-    ],  # None
+    # "callbacks": [
+    #     # pl.callbacks.EarlyStopping(monitor="val_loss", patience=10, mode="min"),
+    #     # pl.callbacks.ModelCheckpoint(monitor="val_loss", save_top_k=1, mode="min"),
+    #     pl.callbacks.ModelCheckpoint(every_n_train_steps=1000, save_top_k=-1),
+    #     FlexibleTqdm(data_module.train_data_size // batch_size, column_width=12), # 注意设置progress_bar_refresh_rate=0，取消自带的进度条
+    #     LearningCurve(figsize=(12, 4), names=("loss", "mse")),
+    # ],  # None
 }
 trainer = pl.Trainer(**trainer_params)
 
